@@ -9,7 +9,7 @@ class MetricsCollector{
 public:
     void registerMetric(const std::string& name_metric, MetricSignification signification);
     void registerCustomMetric(const std::string& name_metric, std::unique_ptr<IMetric> metric);
-    void addValue(double value);
+    void addValue(std::string& name, double value);
     std::vector<std::pair<std::string, double>> getMetricsAndReset();
 private:
     std::mutex mutex_;
