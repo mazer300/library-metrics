@@ -23,8 +23,12 @@ void MetricsCollector::registerCustomMetric(const std::string& name_metric, std:
     metrics[name_metric] = std::move(metric);
 }
 
-void MetricsCollector::addValue(double value){
+void MetricsCollector::addValue(std::string& name, double value){
      std::lock_guard<std::mutex> lock(mutex_);
+     auto it = metrics.find(name);
+     if(it != metrics.end()){
+        it -> second -> add(value);
+     }
 }
 
 std::vector<std::pair<std::string, double>> MetricsCollector::getMetricsAndReset(){
