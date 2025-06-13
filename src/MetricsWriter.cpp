@@ -6,7 +6,7 @@
 #include <chrono>
 
 MetricsWriter::MetricsWriter(MetricsCollector& metricsCollector_, const std::string& filename_, std::chrono::milliseconds interval_) : collector(metricsCollector_), filename(filename_), interval(interval_), running(true) {
-    writer_thread=std::thread(&MetricsWriter::writeLoop, this);
+    writer_thread = std::thread(&MetricsWriter::writeLoop, this);
 }
 
 MetricsWriter::~MetricsWriter(){

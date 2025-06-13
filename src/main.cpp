@@ -37,7 +37,8 @@ int main(){
     collector.registerCustomMetric("Max temp CPU", std::make_unique<MaxMetric>("Max temp CPU"));
 
     std::string filename = "metrics.log";
-    MetricsWriter writer(collector, filename);
+
+    MetricsWriter writer(collector, filename, std::chrono::milliseconds(1000));
 
     // Имитируем работу системы
     for (int i = 0; i < 10; ++i) {
