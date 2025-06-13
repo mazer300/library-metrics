@@ -5,7 +5,7 @@
 
 class MetricsWriter{
 public:
-    MetricsWriter(MetricsCollector& metricsCollector, const std::string& filename, std::chrono::milliseconds interval = std::chrono::milliseconds(1));
+    MetricsWriter(MetricsCollector& metricsCollector, const std::string& filename, std::chrono::milliseconds interval = std::chrono::milliseconds(1000));
     ~MetricsWriter();
 private:
     void writeLoop();

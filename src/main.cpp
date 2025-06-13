@@ -39,6 +39,13 @@ int main(){
     std::string filename = "metrics.log";
     MetricsWriter writer(collector, filename);
 
+    // Имитируем работу системы
+    for (int i = 0; i < 10; ++i) {
+        collector.addValue("HTTP requests RPS", 1);
+        collector.addValue("CPU", 0.5 + i * 0.1);
+        collector.addValue("Max temp CPU", 20.0 + i * 2);
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
 
     std::cout << "Metrics collection complete!\n";
     return 0;
