@@ -42,12 +42,13 @@ int main(){
 
     // Имитируем работу системы
     for (int i = 0; i < 10; ++i) {
-        collector.addValue("HTTP requests RPS", 1);
+        collector.addValue("HTTP requests RPS", 10);
         collector.addValue("CPU", 0.5 + i * 0.1);
         collector.addValue("Max temp CPU", 20.0 + i * 2);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
+    // Конец работы
     std::cout << "Metrics collection complete!\n";
     return 0;
 }

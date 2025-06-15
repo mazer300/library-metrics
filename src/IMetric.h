@@ -1,16 +1,19 @@
+// IMetric.h
 #pragma once
 #include <string>
 
-enum class MetricSignification{
-    Average,
-    Counter,
-    Custom
+// Типы метрик
+enum class MetricSignification {
+    Average,  // Для вычисления среднего значения
+    Counter,  // Для подсчета суммы значений
+    Custom    // Пользовательский тип метрики
 };
 
-class IMetric{
+// Базовый интерфейс для всех метрик
+class IMetric {
 public:
     virtual ~IMetric() = default;
-    virtual void add(double value) = 0;
-    virtual double getAndReset() = 0;
-    virtual std::string getName() const = 0;
+    virtual void add(double value) = 0;            // Добавление значения
+    virtual double getAndReset() = 0;              // Получение и сброс значения
+    virtual std::string getName() const = 0;       // Получение имени метрики
 };
